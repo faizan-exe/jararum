@@ -1,0 +1,36 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <center><h5>{{ user.username }}'s Profile</h2></center>
+    <br>
+    <div class="content-section">
+      <div class="media">
+        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+        <div class="media-body">
+          <h2 class="account-heading">{{ user.username }}</h2>
+          <p class="text-secondary">{{ user.email }}</p>
+          <p class="text-secondary">{{ user.profile.badge }}</p>
+
+          {% if request.user == user %}
+              <a class='text-secondary' href="{% url 'profile_edit' %}">Edit</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% if posts %} 
+    <center><h5>Posts from all time</h2></center>
+    {% for post in posts %}
+        <article class="media content-section">
+         
+          <div class="media-body">
+            
+            
+            <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content }}</p>
+          </div>
+        </article>
+    {% endfor %}
+    {% else %}
+      <p class="text-secondary">Nothing to show</p>
+    {% endif %}
+    {% endblock content %}
