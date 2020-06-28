@@ -52,3 +52,5 @@ def profile_view(request, name):
     }
     return render(request, 'users/profile_view.html', context=context)
 
+
+

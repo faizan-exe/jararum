@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib import messages
 from django.views.generic import (
     ListView,
     DetailView,
@@ -9,16 +10,9 @@ from django.views.generic import (
 )
 from .models import Post
 from django.contrib.auth.models import User
+from users.forms import SearchForUser
 
 
-def base(request):
-    users = []
-    for i in User.objects.all():
-        users.append(i)
-    context = {
-        'users': users
-    }
-    return render(request, 'blog/base.html', context=context)
 
 def home(request):
     context = {

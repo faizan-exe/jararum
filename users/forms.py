@@ -24,3 +24,8 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['image']
+
+class SearchForUser(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username']
