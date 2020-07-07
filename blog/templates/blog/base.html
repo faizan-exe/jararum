@@ -39,7 +39,8 @@
             <div class="navbar-nav">
               {% if user.is_authenticated %}
                 <a class="nav-item nav-link" href="{% url 'post-create' %}">New Post</a>
-                <a class="nav-item nav-link" href="{% url 'profile_view' user.username %}">{{ user.username }}</a>
+                <a class="nav-item nav-link" href="{% url 'inbox' %}">Inbox</a>
+                <a class="nav-item nav-link" href="{% url 'profile_view' user.username %}">{{ user }}</a>
                 <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
               {% else %}
                 <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>

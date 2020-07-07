@@ -1,0 +1,22 @@
+{% extends "blog/base.html" %}
+{% block content %}
+
+{% for m in messages_inbox %}
+    <article class="media content-section">
+      <img class="rounded-circle article-img" src="{{ m.message_from.profile.image.url }}">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="{% url 'profile_view' m.message_from %}">{{ m.message_from }}</a>
+            <br>
+          <small class="text-muted">{{ m.date_posted|date:"F d, Y" }}</small>
+          
+        </div>
+    
+        <p class="article-content">{{ m.text }}</p>
+      </div>
+    </article>
+{% endfor %}
+
+{% endblock content %}
+
+

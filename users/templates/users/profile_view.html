@@ -1,18 +1,22 @@
 {% extends "blog/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <center><h5>{{ user.username }}'s Profile</h2></center>
+    <center><h5>{{ user_profile.username }}'s Profile</h2></center>
     <br>
     <div class="content-section">
       <div class="media">
-        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+        <img class="rounded-circle account-img" src="{{ user_profile.profile.image.url }}">
         <div class="media-body">
-          <h2 class="account-heading">{{ user.username }}</h2>
-          <p class="text-secondary">{{ user.email }}</p>
-          <p class="text-secondary">{{ user.profile.badge }}</p>
+          <h2 class="account-heading">{{ user_profile.username }}</h2>
+          <p class="text-secondary">{{ user_profile.email }}</p>
+          <p class="text-secondary">{{ user_profile.profile.badge }}</p>
 
-          {% if request.user == user %}
-              <a class='text-secondary' href="{% url 'profile_edit' %}">Edit</a>
+          {% if request.user == user_profile %}
+              <a class='text-secondary' href="{% url 'profile_edit' %}">Edit</a><br>
+          {% endif %}
+
+          {% if user_profile.is_authenticated and user_profile != request.user %}
+          <a class="btn btn-outline-secondary" href="{% url 'message' user_profile.username %}">Message</a>
           {% endif %}
         </div>
       </div>

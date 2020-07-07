@@ -19,8 +19,11 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from users import views as user_views
+from directMessage.views import MessageCreateView
+from directMessage.views import MessageListView
 
 urlpatterns = [
+    path('messages/', MessageListView, name='inbox'),
     path('admin/', admin.site.urls),
     path('register/', user_views.register, name='register'),
     path('profile/', user_views.profile, name='profile'),
@@ -28,6 +31,7 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     path('profile/<str:name>', user_views.profile_view, name='profile_view'),
     path('profile/edit/', user_views.profile, name='profile_edit'),
+    path('profile/<str:name>/message', MessageCreateView.as_view(), name='message'),
     path('', include('blog.urls')),
     path('password-reset/',
      auth_views.PasswordResetView.as_view(template_name='users/password-reset.html'),                             

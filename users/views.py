@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib import messages
+from django.contrib import messages as m
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.models import User
@@ -12,7 +12,7 @@ def register(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request, f'Your account has been created! You are now able to log in')
+            m.success(request, f'Your account has been created! You are now able to log in')
             return redirect('login')
     else:
         form = UserRegisterForm()
@@ -29,7 +29,7 @@ def profile(request):
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
             p_form.save()
-            messages.success(request, f'Your account has been updated!')
+            m.success(request, f'Your account has been updated!')
             return redirect('profile_view', request.user)
 
     else:
@@ -47,7 +47,7 @@ def profile_view(request, name):
     getUser = User.objects.get(username=name)
     getUserPost = getUser.post_set.all()
     context = {
-        'user': getUser,
+        'user_profile': getUser,
         'posts': getUserPost
     }
     return render(request, 'users/profile_view.html', context=context)
