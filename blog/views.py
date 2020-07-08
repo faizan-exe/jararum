@@ -10,7 +10,7 @@ from django.views.generic import (
 )
 from .models import Post
 from django.contrib.auth.models import User
-from users.forms import SearchForUser
+
 
 
 

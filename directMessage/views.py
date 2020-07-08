@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import directMessage
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from django.views.generic import (
     ListView,
     DetailView,
@@ -24,6 +25,8 @@ class MessageCreateView(LoginRequiredMixin, CreateView):
         form.instance.message_to = userObject
         return super().form_valid(form)
 
+
+@login_required
 def MessageListView(request):
 
     userAccessingWeb = request.user

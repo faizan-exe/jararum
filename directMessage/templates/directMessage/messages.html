@@ -3,7 +3,6 @@
 
 {% for m in messages_inbox %}
     <article class="media content-section">
-      <img class="rounded-circle article-img" src="{{ m.message_from.profile.image.url }}">
       <div class="media-body">
         <div class="article-metadata">
           <a class="mr-2" href="{% url 'profile_view' m.message_from %}">{{ m.message_from }}</a>
