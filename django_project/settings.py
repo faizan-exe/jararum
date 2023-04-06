@@ -149,4 +149,6 @@ EMAIL_HOST_PASSWORD = 'tankionline123'
 
 django_heroku.settings(locals())
 
+ALLOWED_HOSTS = ['*']
+
 
