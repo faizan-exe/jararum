@@ -86,3 +86,11 @@ a.article-title:hover {
 .account-heading {
   font-size: 2.5rem;
 }
+
+.svg-container{
+
+  right: 100px;
+}
+p{
+  color: red;
+}
