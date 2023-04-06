@@ -24,8 +24,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'exhlfdat&vfum(-34*c2uroi(($ww(yo$9pv98=e6p^gl(-eoj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-ALLOWED_HOSTS = ['jararum.herokuapp.com']
+DEBUG = True
+
 
 
 # Application definition
@@ -79,8 +79,14 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'URL': 'postgresql://postgres:9hkQNHJj0bPuMRGdBjFc@containers-us-west-18.railway.app:5900/railway',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': '9hkQNHJj0bPuMRGdBjFc',
+        'HOST': 'containers-us-west-18.railway.app',
+        'PORT': '5900'
+
     }
 }
 
@@ -122,7 +128,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -142,4 +148,5 @@ EMAIL_HOST_USER = 'azeip57@gmail.com'
 EMAIL_HOST_PASSWORD = 'tankionline123'
 
 django_heroku.settings(locals())
+
 
